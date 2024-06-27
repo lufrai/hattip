@@ -148,7 +148,7 @@ export async function parseMultipartFormData<F>(
 				contentType:
 					part.headers.get("content-type") || "application/octet-stream",
 				body: part.body.pipeThrough(limiter),
-			});
+			}, fields);
 
 			fields.push([name, file as Awaited<F>]);
 		} else {
@@ -214,7 +214,10 @@ export class MultipartFormData<F> {
 	}
 }
 
-export type FileHandler<F> = (fileInfo: FileInfo) => F;
+export type FileHandler<F> = (
+	fileInfo: FileInfo,
+	fields: Array<[string, unknown]>,
+) => F;
 
 type Awaited<T> = T extends Promise<infer U> ? Awaited<U> : T;
 

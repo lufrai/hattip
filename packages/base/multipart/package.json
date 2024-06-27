@@ -1,5 +1,5 @@
 {
-  "name": "@hattip/multipart",
+  "name": "@lufrai/multipart",
   "version": "0.0.46",
   "type": "module",
   "description": "Multipart parser for fetch API",
